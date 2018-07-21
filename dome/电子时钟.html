@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>电子时钟（辣眼睛版本）</title>
+</head>
+<style>
+body{
+  font-family: "华文细黑";
+  background:url("./img2/timg.jpg") no-repeat;
+  background-size: 100%;
+}
+#div1{   
+       		font-size: 50px;
+		 	position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -300px;
+            margin-top: -150px;
+}
+</style>
+<script>
+function toDouble(n){
+	if(n<10){
+		return '0'+n;
+	}else{
+		return ''+n;
+	}
+}
+function toOne(n){
+
+	return (10+n);
+}
+
+window.onload=function()
+{
+
+	var oImg=document.getElementsByTagName('img');
+	function myTime(){
+	var oDate=new Date();
+	var str=toDouble(oDate.getHours())+toDouble(oDate.getMinutes())+toDouble(oDate.getSeconds());
+	var str2=toOne(oDate.getDay());
+	var str3=oDate.getFullYear()+'y'+toDouble(oDate.getMonth()+1)+'m'+toDouble(oDate.getDate());//20180721
+
+	for (var i = 0; i < str.length; i++)
+	 {
+		oImg[i].src='./img2/'+str.charAt(i)+'.png';
+	 }
+	 oImg[8].src='./img2/'+str2+'.png';
+	
+	for (var i = 0; i < str3.length; i++)
+	 {
+		oImg[i+9].src='./img2/'+str3.charAt(i)+'.png';
+	 }
+ 							}
+	setInterval(myTime,1000);
+	 myTime();
+}
+</script>
+<body > 
+<div id="div1">
+	<img src="./img2/0.png">
+	<img src="./img2/0.png">:
+	<img src="./img2/0.png">
+	<img src="./img2/0.png">:
+	<img src="./img2/0.png">
+	<img src="./img2/0.png"><br><!--时间-->
+	<img src="./img2/17.png">
+	<img src="./img2/18.png">
+	<img src="./img2/10.png">&nbsp;<!--星期--><br>
+	<img src="./img2/0.png">
+	<img src="./img2/0.png">
+	<img src="./img2/0.png">
+	<img src="./img2/0.png">
+	<img src="./img2/19.png"><!--年-->
+	<img src="./img2/0.png">
+	<img src="./img2/0.png">
+	<img src="./img2/20.png"><!--月-->
+	<img src="./img2/0.png"><img src="./img2/0.png"><img src="./img2/10.png"><!--日-->
+</div>
+</body>
+</html>
